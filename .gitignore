@@ -1,0 +1,28 @@
+# Sensitive / config files
+MEMORY.md
+SETUP.md
+.agents/
+openclaw-migration/
+*.pem
+*.key
+.env
+.env.*
+
+# Auth, browser & session data
+fb-auth-state.json
+.chrome-profile-copy/
+fb-*.png
+fb-raw-content.txt
+*.log
+ok.txt
+
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

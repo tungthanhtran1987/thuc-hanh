@@ -1,0 +1,50 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 10px;
+}
+
+span {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color, orange);
+}
+
+body:hover .loading span {
+  animation: loading 2s ease 5 var(--delay, 0s);
+
+}
+
+span:nth-child(2) {
+  --color: green;
+  --delay: 0.1s
+}
+
+span:nth-child(3) {
+  --color: violet;
+  --delay: 0.2s
+}
+
+span:nth-child(4) {
+  --color: blue;
+  --delay: 0.3s;
+}
+
+@keyframes loading {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-100px);
+  }
+
+  60% {
+    transform: translateY(10px);
+  }
+}

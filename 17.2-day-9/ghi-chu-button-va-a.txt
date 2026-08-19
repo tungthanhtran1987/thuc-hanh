@@ -1,0 +1,48 @@
+GHI CHÚ: TẠI SAO THẺ <a> VÀ THẺ <button> BỊ LỆCH NHAU KHI DÙNG CHUNG CLASS?
+
+Khi làm UI, chúng ta thường dùng chung một class CSS (ví dụ: .btn) cho cả thẻ <a> (dùng làm link) và thẻ <button> (dùng để submit hoặc tương tác). Tuy nhiên, do trình duyệt có các thuộc tính CSS mặc định (User Agent Stylesheet) rất khác nhau cho 2 thẻ này, nên chúng thường bị lệch nếu ta không "reset" cẩn thận.
+
+Dưới đây là 4 nguyên nhân chính và cách xử lý:
+
+1. Lệch chiều cao do thuộc tính Box-Sizing:
+- Thẻ <button>: Mặc định có `box-sizing: border-box;`. Nếu bạn set height = 34px, chiều cao tổng cộng sẽ được chốt cứng là 34px (đã bao gồm padding và border).
+- Thẻ <a>: Mặc định có `box-sizing: content-box;`. Nếu bạn set height = 34px, phần "ruột" sẽ cao 34px, rồi trình duyệt sẽ cộng thêm chiều cao của padding và border lên. Kết quả là thẻ <a> sẽ to hơn thẻ <button>.
+=> CÁCH KHẮC PHỤC: Set `box-sizing: border-box;` cho thẻ <a> hoặc class chung (như .btn).
+
+2. Khác biệt về Font chữ:
+- Thẻ <a>: Tự động kế thừa font-family và font-size từ thẻ cha bên ngoài (ví dụ <body>).
+- Thẻ <button>: KHÔNG tự kế thừa. Nó dùng font chữ riêng mặc định của trình duyệt/HĐH (thường nhỏ hơn).
+=> CÁCH KHẮC PHỤC: Set `font-family: inherit; font-size: inherit;` cho thẻ <button>. (Cách bạn vừa làm trong file html là rất chuẩn).
+
+3. Khác biệt về Con trỏ chuột (Cursor):
+- Thẻ <a>: Rê chuột vào sẽ thành hình bàn tay (`cursor: pointer`).
+- Thẻ <button>: Rê chuột vào vẫn là mũi tên bình thường.
+=> CÁCH KHẮC PHỤC: Set `cursor: pointer;` cho thẻ <button> hoặc class chung.
+
+4. Màu chữ và gạch chân:
+- Thẻ <a>: Mặc định chữ màu xanh và có gạch chân (`text-decoration: underline`).
+- Thẻ <button>: Không có gạch chân, màu chữ thường xám/đen.
+=> CÁCH KHẮC PHỤC: Set `text-decoration: none; color: ...` cho class chung để ép màu theo ý muốn.
+
+-----------------------------------------------------------
+TÓM LẠI: BỘ CSS RESET CƠ BẢN CHO NÚT BẤM
+-----------------------------------------------------------
+
+Để không bao giờ phải đau đầu vì vụ này, bạn có thể áp dụng 1 trong 2 cách sau:
+
+Cách 1: Reset thẳng vào thẻ html (Giống cách bạn vừa làm)
+button {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+/* Sau đó nhớ set box-sizing: border-box cho .btn nếu .btn có khai báo height cụ thể */
+
+Cách 2: Gộp tất cả vào class .btn
+.btn {
+    box-sizing: border-box; 
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+    /* ... các thuộc tính width, height, border, background khác ... */
+}

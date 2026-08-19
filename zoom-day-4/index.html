@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/style.css" />
+    </head>
+    <body>
+        <h1>Login</h1>
+        <form action="">
+            <!-- 2 cách để bấm vào avatar chọn thay ảnh
+            <label for="avatar-input">
+                <img class="avatar-img" src="./img/img-avatar.png" alt="" />
+            </label>
+            <input hidden id="avatar-input" type="file" accept="image/png" /> 
+            
+            <label>
+                <img class="avatar-img" src="./img/img-avatar.png" alt="" />
+                <input hidden type="file" accept="image/png" />
+            </label> <br> -->
+
+            <!-- Validate -->
+            <!-- <label>
+                Name
+                <input type="text" name="name" placeholder="Name..." required minlength="3" maxlength="5">
+            </label><br>
+            <label>
+                Email
+                <input type="email" name="email" placeholder="Email..." required>
+            </label><br>
+            <label>
+                Password
+                <input type="password" name="password" placeholder="Password..." required>
+            </label><br>
+            <button>Login</button> -->
+            <div class="form-group">
+                <label class="form-label" for="email"> Email </label>
+                <input id="email" type="text" class="text-input" />
+            </div>
+            <div class="form-group">
+                <label>
+                    <span class="form-label">Password</span>
+                    <input type="password" class="text-input" />
+                </label>
+            </div>
+            <div class="form-group">
+                <button class="btn">Login</button>
+            </div>
+        </form>
+    </body>
+</html>
